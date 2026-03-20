@@ -1,44 +1,47 @@
-#Herons Formula
+# Heron's Formula
 import math
 
-#returns the square root of the number n
+# returns the square root of the number n
 def root(n):
     return math.sqrt(n)
 
-#Takes in the 3 side lengths of a triangle as arguments and returns half of
-#the perimeter of a triangle.
-def semiPerimeter():
-    pass
+# Takes in the 3 side lengths of a triangle as arguments and returns half of
+# the perimeter of a triangle.
+def semiPerimeter(a, b, c):
+    return (a + b + c) / 2
 
-#Modify the below function such that it takes in 4 arguments. multiply the first
-#argument by the difference between itself and each individual argument. Reference herons formula for more context.
-def multiplyDifferences():
-    pass
+# multiply the first argument by the difference between itself and each individual argument
+def multiplyDifferences(s, a, b, c):
+    return s * (s - a) * (s - b) * (s - c)
 
-#Given the 3 sides of a triangle return the area.
-#use herons formula
-#Use the functions above.
-def herons():
-    pass
+# Given the 3 sides of a triangle return the area using Heron's formula
+def herons(a, b, c):
+    s = semiPerimeter(a, b, c)
+    value = multiplyDifferences(s, a, b, c)
+    return root(value)
 
 
-#quadratic equation
+# Quadratic Equation
 
-#takes in a number as an argument and returns that number multiplied by 2.
-def denominator():
-    pass
+# takes in a number as an argument and returns that number multiplied by 2
+def denominator(a):
+    return 2 * a
 
-#Takes in two arguments. multiply the first argument by negative 1. Then
-#return the modified first argument added and subtracted by the second argument.
-def plusMinus():
-    pass
-#takes in three numbers as arguments. The first and third multiplied together then
-#multiplied by 4.Then subtract that result from the second argument squared.
-#Return the overall result.
-def mainCalc():
-    pass
+# multiply first argument by -1, then return (-b + c, -b - c)
+def plusMinus(b, c):
+    b = -1 * b
+    return (b + c, b - c)
 
-#The below function should take the inputs of the quadratic equation and return the result
-#Make sure to use all the formulas from this section.
-def quadratic():
-    pass
+# calculate b^2 - 4ac
+def mainCalc(a, b, c):
+    return (b ** 2) - (4 * a * c)
+
+# quadratic formula function
+def quadratic(a, b, c):
+    discriminant = mainCalc(a, b, c)
+    sqrt_val = root(discriminant)
+    
+    num1, num2 = plusMinus(b, sqrt_val)
+    denom = denominator(a)
+    
+    return (num1 / denom, num2 / denom)
